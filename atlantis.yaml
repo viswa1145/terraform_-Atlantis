@@ -1,11 +1,20 @@
-# repos.yaml or atlantis.yaml
+version: 3
+automerge: false
+projects:
+  - dir: .
+    workflow: dev
+    autoplan:
+      enabled: true
+      when_modified: ["*.tf", "*.tfvars", "atlantis.yaml"]
+    apply_requirements: [ mergeable ]
+
 workflows:
   dev:
     plan:
       steps:
-      - init
-      - plan:
-          extra_args: ["-var-file", "terraform.tfvars"]
-      steps:
-        - apply:
+        - init
+        - plan:
             extra_args: ["-var-file", "terraform.tfvars"]
+    apply:
+      steps:
+        - apply
