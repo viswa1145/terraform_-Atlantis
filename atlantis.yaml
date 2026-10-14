@@ -1,7 +1,12 @@
 version: 3
+automerge: false
 projects:
   - dir: .
     workflow: dev
+    autoplan:
+      enabled: true
+      when_modified: ["*.tf", "*.tfvars", "atlantis.yaml"]
+    apply_requirements: [approved, mergeable]
 
 workflows:
   dev:
