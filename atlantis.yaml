@@ -6,7 +6,7 @@ projects:
     autoplan:
       enabled: true
       when_modified: ["*.tf", "*.tfvars", "atlantis.yaml"]
-    apply_requirements: [approved, mergeable]
+    apply_requirements: [ mergeable ]
 
 workflows:
   dev:
