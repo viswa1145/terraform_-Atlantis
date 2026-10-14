@@ -1,11 +1,15 @@
-# repos.yaml or atlantis.yaml
+version: 3
+projects:
+  - dir: .
+    workflow: dev
+
 workflows:
   dev:
     plan:
       steps:
-      - init
-      - plan:
-          extra_args: ["-var-file", "terraform.tfvars"]
-      steps:
-        - apply:
+        - init
+        - plan:
             extra_args: ["-var-file", "terraform.tfvars"]
+    apply:
+      steps:
+        - apply
